@@ -888,22 +888,27 @@
 							var jsonResponse = JSON.parse(response);
 							$output.html('<p><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>Email enviado!</span></p>');
 							$output.addClass("active success");
-							$form[0].reset(); 
 						} catch (e) {
 							$output.html('<p><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>Email enviado!</span></p>');
 							$output.addClass("active success");
-							$form[0].reset(); 
 						}
+						$form[0].reset(); 
+		
+						// Hide the message after 4 seconds
+						setTimeout(function () {
+							$output.removeClass("active success");
+						}, 4000);
 					},
 					error: function (xhr, status, error) {
 						$output.html('<p><span class="icon text-middle mdi mdi-alert-outline icon-xxs"></span><span>Algo deu errado. Por favor tente mais tarde.</span></p>');
 						$output.addClass("active error");
+		
+						// Hide the message after 4 seconds
+						setTimeout(function () {
+							$output.removeClass("active error");
+						}, 2000);
 					}
 				});
-		
-				setTimeout(function () {
-					$output.removeClass("active error success");
-				}, 3500);
 			});
 		});
 
