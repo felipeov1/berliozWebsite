@@ -181,34 +181,36 @@
 
 
     <!-- /////////////////// FORM /////////////////// -->
-    <!--Mailform-->
     <section class="section section-lg">
       <div class="container p-4" style="box-shadow: 0px 0px 139px 0px rgba(0, 0, 0, 0.1)">
-        <!--RD Mailform-->
         <div class="text-center">
           <h1 style="font-size: 52px;">Deixe-nos uma Mensagem</h1>
         </div>
         <div class="row justify-content-center">
           <div class="col-xl-9 col-md-10 col-12"> <!-- Ajustado para aumentar a largura do formulário -->
             <form class="rd-mailform text-left" data-form-output="form-output-global" data-form-type="contact"
-              method="post" action="bat/rd-mailform.php">
+              method="post" action="https://formsubmit.co/berliozenterpriseinnovations@gmail.com
+              ">
+              <input type="hidden" name="_captcha" value="false">
+
+
               <div class="row mb-4"> <!-- Aumentado o espaçamento entre as linhas -->
                 <div class="col">
-                  <input type="text" class="form-control form-control-lg form-control-lg-custom" id="name"
+                  <input type="text" class="form-control form-control-lg form-control-lg-custom" name="name" id="name"
                     placeholder="Nome *">
                 </div>
                 <div class="col">
-                  <input type="text" class="form-control form-control-lg form-control-lg-custom" id="email"
+                  <input type="text" class="form-control form-control-lg form-control-lg-custom"name="email" id="email"
                     placeholder="Email *">
                 </div>
               </div>
               <div class="mb-4">
                 <input type="text" class="form-control form-control-lg form-control-lg-custom"
-                  id="assunto" placeholder="Assunto *">
+                  name="assunto "id="assunto" placeholder="Assunto *">
               </div>
               <div class="mb-4">
                 <textarea class="form-control form-control-lg form-control-lg-custom" id="mensagem"
-                  placeholder="Escreva sua Mensagem *" rows="8"></textarea>
+                 name="mensagem" placeholder="Escreva sua Mensagem *" rows="8"></textarea>
               </div>
               <div class="wrapper text-center mb-4"> 
                 <button type="submit" id="sendForm" class="btn btn-primary btn-lg" style="height: 60px;">Enviar
