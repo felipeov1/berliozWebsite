@@ -6408,8 +6408,36 @@ html.tablet .ui-to-top {
 	top: 0;
 	right: 0;
 	z-index: 1090;
-	background: #404044;
+	background: white;
 }
+
+.rd-navbar--is-stuck .rd-nav-item.active .rd-nav-link{
+    color: blue !important; /* Define a cor azul para as letras */
+}
+
+.rd-navbar--is-stuck .rd-nav-item .rd-nav-link{
+	color: black;
+}
+
+.rd-navbar--is-stuck .rd-nav-item.active .rd-nav-link:before {
+	background-color: blue !important;
+}
+
+/* Altera a cor da logo para preto quando a classe rd-navbar--is-stuck é adicionada */
+.rd-navbar--is-stuck .brand-logo-dark {
+    filter: invert(1); /* Inverte as cores da logo (branco para preto) */
+}
+
+/* Mantém a cor original da logo */
+.rd-navbar:not(.rd-navbar--is-stuck) .brand-logo-dark {
+    filter: invert(0); /* Reverte as cores de volta para a cor original */
+}
+
+.rd-navbar--is-stuck .rd-navbar-main-outer {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra com deslocamento de 4px na vertical e 8px de desfoque */
+}
+
+
 
 .rd-navbar-static .rd-navbar--has-dropdown {
 	position: relative;
