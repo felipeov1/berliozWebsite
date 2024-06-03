@@ -18,26 +18,26 @@
 		livedemo = true,
 
 		plugins = {
-			bootstrapTooltip:        $( '[data-toggle="tooltip"]' ),
-			customToggle:            $( '[data-custom-toggle]' ),
-			counter:                 $( '.counter' ),
-			captcha:                 $( '.recaptcha' ),
-			campaignMonitor:         $( '.campaign-mailform' ),
-			copyrightYear:           $( '.copyright-year' ),
-			owl:                     $( '.owl-carousel' ),
-			progressLinear:          $( '.progress-linear' ),
-			preloader:               $( '.preloader' ),
-			rdNavbar:                $( '.rd-navbar' ),
-			rdMailForm:              $( '.rd-mailform' ),
-			rdInputLabel:            $( '.form-label' ),
-			regula:                  $( '[data-constraints]' ),
-			search:                  $( '.rd-search' ),
-			searchResults:           $( '.rd-search-results' ),
-			wow:                     $( '.wow' ),
-			parallaxJs:              $(".parallax-scene-js"),
-			maps:                    $( '.google-map-container' ),
-			customWaypoints:         $('[data-custom-scroll-to]'),
-			selectFilter:            $("select")
+			bootstrapTooltip: $('[data-toggle="tooltip"]'),
+			customToggle: $('[data-custom-toggle]'),
+			counter: $('.counter'),
+			captcha: $('.recaptcha'),
+			campaignMonitor: $('.campaign-mailform'),
+			copyrightYear: $('.copyright-year'),
+			owl: $('.owl-carousel'),
+			progressLinear: $('.progress-linear'),
+			preloader: $('.preloader'),
+			rdNavbar: $('.rd-navbar'),
+			rdMailForm: $('.rd-mailform'),
+			rdInputLabel: $('.form-label'),
+			regula: $('[data-constraints]'),
+			search: $('.rd-search'),
+			searchResults: $('.rd-search-results'),
+			wow: $('.wow'),
+			parallaxJs: $(".parallax-scene-js"),
+			maps: $('.google-map-container'),
+			customWaypoints: $('[data-custom-scroll-to]'),
+			selectFilter: $("select")
 		};
 
 	/**
@@ -45,8 +45,8 @@
 	 * @param {object} elem - jQuery object
 	 * @return {boolean}
 	 */
-	function isScrolledIntoView ( elem ) {
-		if ( isNoviBuilder ) return true;
+	function isScrolledIntoView(elem) {
+		if (isNoviBuilder) return true;
 		return elem.offset().top + elem.outerHeight() >= $window.scrollTop() && elem.offset().top <= $window.scrollTop() + $window.height();
 	}
 
@@ -55,16 +55,16 @@
 	 * @param {object} element - jQuery object
 	 * @param {function} func - init function
 	 */
-	function lazyInit( element, func ) {
+	function lazyInit(element, func) {
 		var scrollHandler = function () {
-			if ( ( !element.hasClass( 'lazy-loaded' ) && ( isScrolledIntoView( element ) ) ) ) {
+			if ((!element.hasClass('lazy-loaded') && (isScrolledIntoView(element)))) {
 				func.call();
-				element.addClass( 'lazy-loaded' );
+				element.addClass('lazy-loaded');
 			}
 		};
 
 		scrollHandler();
-		$window.on( 'scroll', scrollHandler );
+		$window.on('scroll', scrollHandler);
 	}
 
 	// Initialize scripts that require a loaded page
@@ -72,7 +72,7 @@
 		// Page loader & Page transition
 		if (plugins.preloader.length && !isNoviBuilder) {
 			pageTransition({
-				target: document.querySelector( '.page' ),
+				target: document.querySelector('.page'),
 				delay: 0,
 				duration: 500,
 				classIn: 'fadeIn',
@@ -81,10 +81,10 @@
 				conditions: function (event, link) {
 					return link && !/(\#|callto:|tel:|mailto:|:\/\/)/.test(link) && !event.currentTarget.hasAttribute('data-lightgallery');
 				},
-				onTransitionStart: function ( options ) {
-					setTimeout( function () {
+				onTransitionStart: function (options) {
+					setTimeout(function () {
 						plugins.preloader.removeClass('loaded');
-					}, options.duration * .75 );
+					}, options.duration * .75);
 				},
 				onReady: function () {
 					plugins.preloader.addClass('loaded');
@@ -94,40 +94,40 @@
 		}
 
 		// jQuery Count To
-		if ( plugins.counter.length ) {
-			for ( var i = 0; i < plugins.counter.length; i++ ) {
+		if (plugins.counter.length) {
+			for (var i = 0; i < plugins.counter.length; i++) {
 				var
 					counter = $(plugins.counter[i]),
 					initCount = function () {
 						var counter = $(this);
-						if ( !counter.hasClass( "animated-first" ) && isScrolledIntoView( counter ) ) {
+						if (!counter.hasClass("animated-first") && isScrolledIntoView(counter)) {
 							counter.countTo({
 								refreshInterval: 40,
 								speed: counter.attr("data-speed") || 1000,
 								from: 0,
-								to: parseInt( counter.text(), 10 )
+								to: parseInt(counter.text(), 10)
 							});
 							counter.addClass('animated-first');
 						}
 					};
 
-				$.proxy( initCount, counter )();
-				$window.on( "scroll", $.proxy( initCount, counter ) );
+				$.proxy(initCount, counter)();
+				$window.on("scroll", $.proxy(initCount, counter));
 			}
 		}
 
 		// Progress bar
-		if ( plugins.progressLinear.length ) {
-			for ( var i = 0; i < plugins.progressLinear.length; i++) {
+		if (plugins.progressLinear.length) {
+			for (var i = 0; i < plugins.progressLinear.length; i++) {
 				var
 					bar = $(plugins.progressLinear[i]),
-					initProgress = function() {
+					initProgress = function () {
 						var
 							bar = $(this),
 							end = parseInt($(this).find('.progress-value').text(), 10);
 
-						if ( !bar.hasClass( "animated-first" ) && isScrolledIntoView( bar ) ) {
-							bar.find('.progress-bar-linear').css({width: end + '%'});
+						if (!bar.hasClass("animated-first") && isScrolledIntoView(bar)) {
+							bar.find('.progress-bar-linear').css({ width: end + '%' });
 							bar.find('.progress-value').countTo({
 								refreshInterval: 40,
 								from: 0,
@@ -138,8 +138,8 @@
 						}
 					};
 
-				$.proxy( initProgress, bar )();
-				$window.on( "scroll", $.proxy( initProgress, bar ) );
+				$.proxy(initProgress, bar)();
+				$window.on("scroll", $.proxy(initProgress, bar));
 			}
 		}
 
@@ -154,73 +154,73 @@
 		 * @desc Initialize owl carousel plugin
 		 * @param {object} carousel - carousel jQuery object
 		 */
-		function initOwlCarousel ( carousel ) {
+		function initOwlCarousel(carousel) {
 			var
-				aliaces = [ '-', '-sm-', '-md-', '-lg-', '-xl-', '-xxl-' ],
-				values = [ 0, 576, 768, 992, 1200, 1600 ],
+				aliaces = ['-', '-sm-', '-md-', '-lg-', '-xl-', '-xxl-'],
+				values = [0, 576, 768, 992, 1200, 1600],
 				responsive = {};
 
-			for ( var j = 0; j < values.length; j++ ) {
-				responsive[ values[ j ] ] = {};
-				for ( var k = j; k >= -1; k-- ) {
-					if ( !responsive[ values[ j ] ][ 'items' ] && carousel.attr( 'data' + aliaces[ k ] + 'items' ) ) {
-						responsive[ values[ j ] ][ 'items' ] = k < 0 ? 1 : parseInt( carousel.attr( 'data' + aliaces[ k ] + 'items' ), 10 );
+			for (var j = 0; j < values.length; j++) {
+				responsive[values[j]] = {};
+				for (var k = j; k >= -1; k--) {
+					if (!responsive[values[j]]['items'] && carousel.attr('data' + aliaces[k] + 'items')) {
+						responsive[values[j]]['items'] = k < 0 ? 1 : parseInt(carousel.attr('data' + aliaces[k] + 'items'), 10);
 					}
-					if ( !responsive[ values[ j ] ][ 'stagePadding' ] && responsive[ values[ j ] ][ 'stagePadding' ] !== 0 && carousel.attr( 'data' + aliaces[ k ] + 'stage-padding' ) ) {
-						responsive[ values[ j ] ][ 'stagePadding' ] = k < 0 ? 0 : parseInt( carousel.attr( 'data' + aliaces[ k ] + 'stage-padding' ), 10 );
+					if (!responsive[values[j]]['stagePadding'] && responsive[values[j]]['stagePadding'] !== 0 && carousel.attr('data' + aliaces[k] + 'stage-padding')) {
+						responsive[values[j]]['stagePadding'] = k < 0 ? 0 : parseInt(carousel.attr('data' + aliaces[k] + 'stage-padding'), 10);
 					}
-					if ( !responsive[ values[ j ] ][ 'margin' ] && responsive[ values[ j ] ][ 'margin' ] !== 0 && carousel.attr( 'data' + aliaces[ k ] + 'margin' ) ) {
-						responsive[ values[ j ] ][ 'margin' ] = k < 0 ? 30 : parseInt( carousel.attr( 'data' + aliaces[ k ] + 'margin' ), 10 );
+					if (!responsive[values[j]]['margin'] && responsive[values[j]]['margin'] !== 0 && carousel.attr('data' + aliaces[k] + 'margin')) {
+						responsive[values[j]]['margin'] = k < 0 ? 30 : parseInt(carousel.attr('data' + aliaces[k] + 'margin'), 10);
 					}
 				}
 			}
 
 			// Enable custom pagination
-			if ( carousel.attr( 'data-dots-custom' ) ) {
-				carousel.on( 'initialized.owl.carousel', function ( event ) {
+			if (carousel.attr('data-dots-custom')) {
+				carousel.on('initialized.owl.carousel', function (event) {
 					var
-						carousel = $( event.currentTarget ),
-						customPag = $( carousel.attr( 'data-dots-custom' ) ),
+						carousel = $(event.currentTarget),
+						customPag = $(carousel.attr('data-dots-custom')),
 						active = 0;
 
-					if ( carousel.attr( 'data-active' ) ) {
-						active = parseInt( carousel.attr( 'data-active' ), 10 );
+					if (carousel.attr('data-active')) {
+						active = parseInt(carousel.attr('data-active'), 10);
 					}
 
-					carousel.trigger( 'to.owl.carousel', [ active, 300, true ] );
-					customPag.find( '[data-owl-item="' + active + '"]' ).addClass( 'active' );
+					carousel.trigger('to.owl.carousel', [active, 300, true]);
+					customPag.find('[data-owl-item="' + active + '"]').addClass('active');
 
-					customPag.find( '[data-owl-item]' ).on( 'click', function ( event ) {
+					customPag.find('[data-owl-item]').on('click', function (event) {
 						event.preventDefault();
-						carousel.trigger( 'to.owl.carousel', [ parseInt( this.getAttribute( 'data-owl-item' ), 10 ), 300, true ] );
-					} );
+						carousel.trigger('to.owl.carousel', [parseInt(this.getAttribute('data-owl-item'), 10), 300, true]);
+					});
 
-					carousel.on( 'translate.owl.carousel', function ( event ) {
-						customPag.find( '.active' ).removeClass( 'active' );
-						customPag.find( '[data-owl-item="' + event.item.index + '"]' ).addClass( 'active' )
-					} );
-				} );
+					carousel.on('translate.owl.carousel', function (event) {
+						customPag.find('.active').removeClass('active');
+						customPag.find('[data-owl-item="' + event.item.index + '"]').addClass('active')
+					});
+				});
 			}
 
-			carousel.owlCarousel( {
-				autoplay:           isNoviBuilder ? false : carousel.attr( 'data-autoplay' ) !== 'false',
-				autoplayTimeout:    carousel.attr( "data-autoplay" ) ? Number( carousel.attr( "data-autoplay" ) ) : 3000,
+			carousel.owlCarousel({
+				autoplay: isNoviBuilder ? false : carousel.attr('data-autoplay') !== 'false',
+				autoplayTimeout: carousel.attr("data-autoplay") ? Number(carousel.attr("data-autoplay")) : 3000,
 				autoplayHoverPause: true,
-				loop:               isNoviBuilder ? false : carousel.attr( 'data-loop' ) !== 'false',
-				items:              1,
-				center:             carousel.attr( 'data-center' ) === 'true',
-				dotsContainer:      carousel.attr( 'data-pagination-class' ) || false,
-				navContainer:       carousel.attr( 'data-navigation-class' ) || false,
-				mouseDrag:          isNoviBuilder ? false : carousel.attr( 'data-mouse-drag' ) !== 'false',
-				nav:                carousel.attr( 'data-nav' ) === 'true',
-				dots:               carousel.attr( 'data-dots' ) === 'true',
-				dotsEach:           carousel.attr( 'data-dots-each' ) ? parseInt( carousel.attr( 'data-dots-each' ), 10 ) : false,
-				animateIn:          carousel.attr( 'data-animation-in' ) ? carousel.attr( 'data-animation-in' ) : false,
-				animateOut:         carousel.attr( 'data-animation-out' ) ? carousel.attr( 'data-animation-out' ) : false,
-				responsive:         responsive,
-				navText:            carousel.attr( 'data-nav-text' ) ? $.parseJSON( carousel.attr( 'data-nav-text' ) ) : [],
-				navClass:           carousel.attr( 'data-nav-class' ) ? $.parseJSON( carousel.attr( 'data-nav-class' ) ) : [ 'owl-prev', 'owl-next' ]
-			} );
+				loop: isNoviBuilder ? false : carousel.attr('data-loop') !== 'false',
+				items: 1,
+				center: carousel.attr('data-center') === 'true',
+				dotsContainer: carousel.attr('data-pagination-class') || false,
+				navContainer: carousel.attr('data-navigation-class') || false,
+				mouseDrag: isNoviBuilder ? false : carousel.attr('data-mouse-drag') !== 'false',
+				nav: carousel.attr('data-nav') === 'true',
+				dots: carousel.attr('data-dots') === 'true',
+				dotsEach: carousel.attr('data-dots-each') ? parseInt(carousel.attr('data-dots-each'), 10) : false,
+				animateIn: carousel.attr('data-animation-in') ? carousel.attr('data-animation-in') : false,
+				animateOut: carousel.attr('data-animation-out') ? carousel.attr('data-animation-out') : false,
+				responsive: responsive,
+				navText: carousel.attr('data-nav-text') ? $.parseJSON(carousel.attr('data-nav-text')) : [],
+				navClass: carousel.attr('data-nav-class') ? $.parseJSON(carousel.attr('data-nav-class')) : ['owl-prev', 'owl-next']
+			});
 		}
 
 		/**
@@ -252,10 +252,168 @@
 			})
 		}
 
-		
-	
+		/**
+		 * @desc Attach form validation to elements
+		 * @param {object} elements - jQuery object
+		 */
+		function attachFormValidator(elements) {
+			// Custom validator - phone number
+			regula.custom({
+				name: 'PhoneNumber',
+				defaultMessage: 'Invalid phone number format',
+				validator: function () {
+					if (this.value === '') return true;
+					else return /^(\+\d)?[0-9\-\(\) ]{5,}$/i.test(this.value);
+				}
+			});
 
-		
+			for (var i = 0; i < elements.length; i++) {
+				var o = $(elements[i]), v;
+				o.addClass("form-control-has-validation").after("<span class='form-validation'></span>");
+				v = o.parent().find(".form-validation");
+				if (v.is(":last-child")) o.addClass("form-control-last-child");
+			}
+
+			elements.on('input change propertychange blur', function (e) {
+				var $this = $(this), results;
+
+				if (e.type !== "blur") if (!$this.parent().hasClass("has-error")) return;
+				if ($this.parents('.rd-mailform').hasClass('success')) return;
+
+				if ((results = $this.regula('validate')).length) {
+					for (i = 0; i < results.length; i++) {
+						$this.siblings(".form-validation").text(results[i].message).parent().addClass("has-error");
+					}
+				} else {
+					$this.siblings(".form-validation").text("").parent().removeClass("has-error")
+				}
+			}).regula('bind');
+
+			var regularConstraintsMessages = [
+				{
+					type: regula.Constraint.Required,
+					newMessage: "The text field is required."
+				},
+				{
+					type: regula.Constraint.Email,
+					newMessage: "The email is not a valid email."
+				},
+				{
+					type: regula.Constraint.Numeric,
+					newMessage: "Only numbers are required"
+				},
+				{
+					type: regula.Constraint.Selected,
+					newMessage: "Please choose an option."
+				}
+			];
+
+
+			for (var i = 0; i < regularConstraintsMessages.length; i++) {
+				var regularConstraint = regularConstraintsMessages[i];
+
+				regula.override({
+					constraintType: regularConstraint.type,
+					defaultMessage: regularConstraint.newMessage
+				});
+			}
+		}
+
+		/**
+		 * @desc Check if all elements pass validation
+		 * @param {object} elements - object of items for validation
+		 * @param {object} captcha - captcha object for validation
+		 * @return {boolean}
+		 */
+		function isValidated(elements, captcha) {
+			var results, errors = 0;
+
+			if (elements.length) {
+				for (var j = 0; j < elements.length; j++) {
+
+					var $input = $(elements[j]);
+					if ((results = $input.regula('validate')).length) {
+						for (k = 0; k < results.length; k++) {
+							errors++;
+							$input.siblings(".form-validation").text(results[k].message).parent().addClass("has-error");
+						}
+					} else {
+						$input.siblings(".form-validation").text("").parent().removeClass("has-error")
+					}
+				}
+
+				if (captcha) {
+					if (captcha.length) {
+						return validateReCaptcha(captcha) && errors === 0
+					}
+				}
+
+				return errors === 0;
+			}
+			return true;
+		}
+
+		/**
+		 * @desc Validate google reCaptcha
+		 * @param {object} captcha - captcha object for validation
+		 * @return {boolean}
+		 */
+		function validateReCaptcha(captcha) {
+			var captchaToken = captcha.find('.g-recaptcha-response').val();
+
+			if (captchaToken.length === 0) {
+				captcha
+					.siblings('.form-validation')
+					.html('Por favor, prove that you are not robot.')
+					.addClass('active');
+				captcha
+					.closest('.form-wrap')
+					.addClass('has-error');
+
+				captcha.on('propertychange', function () {
+					var $this = $(this),
+						captchaToken = $this.find('.g-recaptcha-response').val();
+
+					if (captchaToken.length > 0) {
+						$this
+							.closest('.form-wrap')
+							.removeClass('has-error');
+						$this
+							.siblings('.form-validation')
+							.removeClass('active')
+							.html('');
+						$this.off('propertychange');
+					}
+				});
+
+				return false;
+			}
+
+			return true;
+		}
+
+		/**
+		 * @desc Initialize Google reCaptcha
+		 */
+		window.onloadCaptchaCallback = function () {
+			for (var i = 0; i < plugins.captcha.length; i++) {
+				var $capthcaItem = $(plugins.captcha[i]);
+
+				grecaptcha.render(
+					$capthcaItem.attr('id'),
+					{
+						sitekey: $capthcaItem.attr('data-sitekey'),
+						size: $capthcaItem.attr('data-size') ? $capthcaItem.attr('data-size') : 'normal',
+						theme: $capthcaItem.attr('data-theme') ? $capthcaItem.attr('data-theme') : 'light',
+						callback: function (e) {
+							$('.recaptcha').trigger('propertychange');
+						}
+					}
+				);
+				$capthcaItem.after("<span class='form-validation'></span>");
+			}
+		};
+
 		/**
 		 * @desc Initialize Bootstrap tooltip with required placement
 		 * @param {string} tooltipPlacement
@@ -264,9 +422,9 @@
 			plugins.bootstrapTooltip.tooltip('dispose');
 
 			if (window.innerWidth < 576) {
-				plugins.bootstrapTooltip.tooltip({placement: 'bottom'});
+				plugins.bootstrapTooltip.tooltip({ placement: 'bottom' });
 			} else {
-				plugins.bootstrapTooltip.tooltip({placement: tooltipPlacement});
+				plugins.bootstrapTooltip.tooltip({ placement: tooltipPlacement });
 			}
 		}
 
@@ -299,8 +457,8 @@
 		}
 
 		// Google maps
-		if( plugins.maps.length ) {
-			lazyInit( plugins.maps, initMaps );
+		if (plugins.maps.length) {
+			lazyInit(plugins.maps, initMaps);
 		}
 
 
@@ -466,11 +624,11 @@
 		}
 
 		// Owl carousel
-		if ( plugins.owl.length ) {
-			for ( var i = 0; i < plugins.owl.length; i++ ) {
-				var carousel = $( plugins.owl[ i ] );
-				plugins.owl[ i ].owl = carousel;
-				initOwlCarousel( carousel );
+		if (plugins.owl.length) {
+			for (var i = 0; i < plugins.owl.length; i++) {
+				var carousel = $(plugins.owl[i]);
+				plugins.owl[i].owl = carousel;
+				initOwlCarousel(carousel);
 			}
 		}
 
@@ -536,8 +694,8 @@
 					var inputs = $this[0].getElementsByTagName('input');
 					for (var i = 0; i < inputs.length; i++) {
 						inputs[i].value = '';
-						var label = document.querySelector( '[for="'+ inputs[i].getAttribute( 'id' ) +'"]' );
-						if( label ) label.classList.remove( 'focus', 'not-empty' );
+						var label = document.querySelector('[for="' + inputs[i].getAttribute('id') + '"]');
+						if (label) label.classList.remove('focus', 'not-empty');
 					}
 
 					return false;
@@ -545,7 +703,91 @@
 			}
 		}
 
+		// Email com mensagem carregando e email enviado 
+		// $(document).ready(function () {
+		// 	var $form = $('.rd-mailform'),
+		// 		$output = $('#' + $form.attr('data-form-output'));
 
+		// 	$form.on('submit', function (e) {
+		// 		e.preventDefault();
+
+		// 		var formData = $form.serialize();
+
+		// 		$output.removeClass("active error success");
+		// 		$output.html('<p><span class="icon text-middle fa fa-circle-o-notch fa-spin icon-xxs"></span><span>Enviando</span></p>');
+		// 		$output.addClass("active");
+
+		// 		$.ajax({
+		// 			method: "POST",
+		// 			url: $form.attr('action'),
+		// 			data: formData,
+		// 			dataType: 'html',
+		// 			success: function (response) {
+		// 				try {
+		// 					var jsonResponse = JSON.parse(response);
+		// 					$output.html('<p><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>Email enviado!</span></p>');
+		// 					$output.addClass("active success");
+		// 					$form[0].reset();
+		// 				} catch (e) {
+		// 					$output.html('<p><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>Email enviado!</span></p>');
+		// 					$output.addClass("active success");
+		// 					$form[0].reset();
+		// 				}
+		// 			},
+		// 			error: function (xhr, status, error) {
+		// 				$output.html('<p><span class="icon text-middle mdi mdi-alert-outline icon-xxs"></span><span>Algo deu errado. Por favor tente mais tarde.</span></p>');
+		// 				$output.addClass("active error");
+		// 			}
+		// 		});
+
+		// 		setTimeout(function () {
+		// 			$output.removeClass("active error success");
+		// 		}, 3500);
+		// 	});
+		// });
+
+		//Mensagem email enviado sem confirmar ajax
+	
+		$(document).ready(function () {
+			var $form = $('.rd-mailform'),
+				$output = $('#' + $form.attr('data-form-output'));
+		
+			$form.on('submit', function (e) {
+				e.preventDefault();
+		
+				var formData = $form.serialize();
+		
+				// Exibe a mensagem de sucesso imediatamente após o envio do formulário
+				$output.removeClass("active error success");
+				$output.html('<p><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>Email enviado!</span></p>');
+				$output.addClass("active success");
+		
+				// Remove a mensagem de sucesso após 5 segundos
+				setTimeout(function () {
+					$output.removeClass("active success").empty();
+				}, 5000); // 5000 milissegundos = 5 segundos
+		
+				$.ajax({
+					method: "POST",
+					url: $form.attr('action'),
+					data: formData,
+					dataType: 'html',
+					success: function (response) {
+						// O sucesso do AJAX é tratado, mas a mensagem já foi exibida anteriormente
+						$form[0].reset();
+					},
+					error: function (xhr, status, error) {
+						// Em caso de erro, a mensagem pode ser substituída ou mantida, dependendo do requisito
+						// Aqui, vamos apenas limpar a mensagem de sucesso após o tempo definido
+						setTimeout(function () {
+							$output.removeClass("active success").empty();
+						}, 5000); // 5000 milissegundos = 5 segundos
+					}
+				});
+			});
+		});
+
+		
 		// Custom Toggles
 		if (plugins.customToggle.length) {
 			for (var i = 0; i < plugins.customToggle.length; i++) {
@@ -584,11 +826,11 @@
 		 * @description Creates a parallax effect between an array of layers, driving the motion from the gyroscope output of a smartdevice. If no gyroscope is available, the cursor position is used.
 		 */
 		if (plugins.parallaxJs.length) {
-		for (var i = 0; i < plugins.parallaxJs.length; i++) {
-			var scene = plugins.parallaxJs[i];
-			new Parallax(scene);
+			for (var i = 0; i < plugins.parallaxJs.length; i++) {
+				var scene = plugins.parallaxJs[i];
+				new Parallax(scene);
+			}
 		}
-	}
 
 		//Custom Waypoints
 		if (plugins.customWaypoints.length && !isNoviBuilder) {
