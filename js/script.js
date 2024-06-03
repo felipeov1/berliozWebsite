@@ -774,7 +774,7 @@
 					dataType: 'html',
 					success: function (response) {
 						// O sucesso do AJAX é tratado, mas a mensagem já foi exibida anteriormente
-						$form[0].reset();
+						$form[0].reset(); // Limpa os campos do formulário
 					},
 					error: function (xhr, status, error) {
 						// Em caso de erro, a mensagem pode ser substituída ou mantida, dependendo do requisito
@@ -785,7 +785,7 @@
 					}
 				});
 			});
-		});
+		}); 
 
 		
 		// Custom Toggles
