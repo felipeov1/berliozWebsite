@@ -66,7 +66,7 @@
                 <li>
                   <div class="unit unit-spacing-xs align-items-center">
                     <div class="unit-left"><span class="icon text-middle fa-phone"></span></div>
-                    <div class="unit-body"><a href="tel:#">+43 6969-6969</a></div>
+                    <div class="unit-body"><a  href="https://wa.me/5543999702073">+55 (43) 99970-2073</a></div>
                   </div>
                 </li>
                 <li>
@@ -78,7 +78,8 @@
                 </li>
               </ul>
               <ul class="social-links">
-                <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-linkedin" href="https://www.linkedin.com/company/berlioz-solutions"  target="_blank"></a></li>
+                <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-linkedin"
+                    href="https://www.linkedin.com/company/berlioz-solutions" target="_blank"></a></li>
                 <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-instagram"
                     href="https://www.instagram.com/berliozsolutions" target="_blank"></a></li>
                 <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-facebook"
@@ -144,8 +145,8 @@
         <div class="col-lg-5 col-md-5 col-sm-9 mx-2 p-4" id="cardPhone" style="background-color: #f8f8f8;">
           <img src="/images/phone-icon.png" alt="Imagem de Telefone">
           <h3 class="mt-2">Entre em Contato</h3>
-          <p style="font-size: 20px;" id="telNumCard">+55 (43)XXXX-XXXX</p>
-          <a href="" class="d-inline-block"><button class="btn-primary btn-lg mt-3 p-3"
+          <p style="font-size: 20px;" id="telNumCard">+55 (43) 99970-2073</p>
+          <a href="https://wa.me/5543999702073" class="d-inline-block"><button class="btn-primary btn-lg mt-3 p-3"
               style="height: fit-content; width: fit-content; border-radius: 12px; display: flex; align-items: center; border: 0px; cursor: pointer;">Conversar
               Pelo WhatsApp</button>
           </a>
@@ -185,39 +186,46 @@
     </style>
 
 
-<section class="section section-lg">
-  <div class="container p-4" style="box-shadow: 0px 0px 139px 0px rgba(0, 0, 0, 0.1)">
-    <div class="text-center text-md-center" style="display: flex; flex-direction: column; align-items: center;">
-      <h1 class="mb-4" style="font-size: 40px;">FALE COM A GENTE!</h1>
-      <h5 class="mb-4" style="font-size: 15px; max-width: 600px;">Por favor, envie sua mensagem com dúvidas, sugestões ou pedido de orçamento. Estamos aqui para ajudar e responder o mais rápido possível.</h5>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-xl-9 col-md-10 col-12">
-        <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="https://formsubmit.co/faleconosco@berliozsolutions.com">
-          <input type="hidden" name="_captcha" value="false">
+    <section class="section section-lg">
+      <div class="container p-4" style="box-shadow: 0px 0px 139px 0px rgba(0, 0, 0, 0.1)">
+        <div class="text-center text-md-center" style="display: flex; flex-direction: column; align-items: center;">
+          <h1 class="mb-4" style="font-size: 40px;">FALE COM A GENTE!</h1>
+          <h5 class="mb-4" style="font-size: 15px; max-width: 600px;">Por favor, envie sua mensagem com dúvidas,
+            sugestões ou pedido de orçamento. Estamos aqui para ajudar e responder o mais rápido possível.</h5>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-xl-9 col-md-10 col-12">
+            <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post"
+              action="https://formsubmit.co/faleconosco@berliozsolutions.com">
+              <input type="hidden" name="_captcha" value="false">
 
-          <div class="row mb-4">
-            <div class="col-12 mb-3">
-              <input type="text" class="form-control form-control-lg form-control-lg-custom" name="name" id="name" placeholder="Nome *">
-            </div>
-            <div class="col-12">
-              <input type="text" class="form-control form-control-lg form-control-lg-custom" name="email" id="email" placeholder="Email *">
-            </div>
+              <div class="row mb-4">
+                <div class="col-12 mb-3">
+                  <input type="text" class="form-control form-control-lg form-control-lg-custom" name="name" id="name"
+                    placeholder="Nome *">
+                </div>
+                <div class="col-12">
+                  <input type="text" class="form-control form-control-lg form-control-lg-custom" name="email" id="email"
+                    placeholder="Email *">
+                </div>
+              </div>
+              <div class="mb-4">
+                <input type="text" class="form-control form-control-lg form-control-lg-custom" name="assunto"
+                  id="assunto" placeholder="Assunto *">
+              </div>
+              <div class="mb-4">
+                <textarea class="form-control form-control-lg form-control-lg-custom" id="mensagem" name="mensagem"
+                  placeholder="Escreva sua Mensagem *" rows="8"></textarea>
+              </div>
+              <div class="wrapper text-center mb-4">
+                <button type="submit" id="sendForm" class="btn btn-primary btn-lg" style="height: 60px;">Enviar
+                  Mensagem</button>
+              </div>
+            </form>
           </div>
-          <div class="mb-4">
-            <input type="text" class="form-control form-control-lg form-control-lg-custom" name="assunto" id="assunto" placeholder="Assunto *">
-          </div>
-          <div class="mb-4">
-            <textarea class="form-control form-control-lg form-control-lg-custom" id="mensagem" name="mensagem" placeholder="Escreva sua Mensagem *" rows="8"></textarea>
-          </div>
-          <div class="wrapper text-center mb-4">
-            <button type="submit" id="sendForm" class="btn btn-primary btn-lg" style="height: 60px;">Enviar Mensagem</button>
-          </div>
-        </form>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <style>
       .form-control-lg-custom {
@@ -255,11 +263,10 @@
         <div class="col-lg-3 col-sm-8 wow">
           <P class="footer-classic-title">Informações de contato</P>
           <div class="d-block offset-top-0"><span class="mr-2">Londrina - PR</span><span
-              class="d-lg-block">Brasil</span></div><a class="d-inline-block accent-link" href="mailto:              faleconosco@berliozsolutions.com
+              class="d-lg-block">Brasil</span></div><a class="d-inline-block accent-link" href="mailto:faleconosco@berliozsolutions.com
             ">
             faleconosco@berliozsolutions.com
-          </a><a class="d-inline-block" href="tel:#">+1 800 123
-            45 67</a>
+          </a><a class="d-inline-block" href="https://wa.me/5543999702073">+55 (43) 99970-2073</a>
           <ul>
             <li>Seg-Sab:<span class="d-inline-block offset-left-10 text-white">9:00 - 18:00</span></li>
           </ul>
@@ -271,14 +278,15 @@
         <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. Todos Direitos Reservados.
         </p>
         <ul class="social-links">
-          <li><a class="fa fa-linkedin" href="https://www.linkedin.com/company/berlioz-solutions"  target="_blank"></a></li>
-            <li><a class="fa fa-facebook"  href="https://facebook.com/berliozsolutions" target="_blank"></a></li>
-            <li><a class="fa fa-instagram" href="https://www.instagram.com/berliozsolutions" target="_blank"></a></li>
+          <li><a class="fa fa-linkedin" href="https://www.linkedin.com/company/berlioz-solutions" target="_blank"></a>
+          </li>
+          <li><a class="fa fa-facebook" href="https://facebook.com/berliozsolutions" target="_blank"></a></li>
+          <li><a class="fa fa-instagram" href="https://www.instagram.com/berliozsolutions" target="_blank"></a></li>
         </ul>
       </div>
     </div>
 
-    <a href="https://wa.me/55(aqui seu numero com ddd | tudo junto)?text=Adorei%20seu%20artigo" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
+    <a href="https://wa.me/5543999702073" style="position:fixed;width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF;border-radius:50px;text-align:center;font-size:30px;box-shadow: 1px 1px 2px #888;
     z-index:1000;" target="_blank">
       <i style="margin-top:16px" class="fa fa-whatsapp"></i>
     </a>
