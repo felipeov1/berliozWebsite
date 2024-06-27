@@ -2,11 +2,11 @@
 <html class="wide wow-animation" lang="pt-br">
 
 <head>
-  <title>Berlioz Solutions - Desenvolvimento de Sites, Sistemas e Apps</title>
+  <title id="titlePage">Berlioz Solutions - Desenvolvimento de Sites, Sistemas e Apps</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description"
+  <meta id="metaDescription" name="description"
     content="Impulsione seu negócio com nossas soluções personalizadas em sites, sistemas, software e aplicativos. Aumente sua produtividade e crescimento com ferramentas inovadoras e eficazes.">
 
   <meta name="theme-color" content="#404044">
@@ -39,12 +39,13 @@
 </head>
 
 <body>
+
   <div class="preloader">
     <div class="preloader-body">
       <div class="cssload-container">
         <div class="cssload-speeding-wheel"></div>
       </div>
-      <p>Carregando...</p>
+      <p id="loadingPage">Carregando...</p>
     </div>
   </div>
 
@@ -66,15 +67,16 @@
                 <li>
                   <div class="unit unit-spacing-xs align-items-center">
                     <div class="unit-left"><span class="icon text-middle fa-phone"></span></div>
-                    <div class="unit-body"><a href="https://wa.me/5543999702073" target="_blank">+55 (43) 99970-2073</a>
+                    <div class="unit-body" id="numberPhone"><a href="https://wa.me/5543999702073" target="_blank">+55
+                        (43) 99970-2073</a>
                     </div>
                   </div>
                 </li>
                 <li>
                   <div class="unit unit-spacing-xs align-items-center">
                     <div class="unit-left"><span class="icon text-middle fa-envelope"></span></div>
-                    <div class="unit-body"><a href="mailto:faleconosco@berliozsolutions.com"
-                        target="_blank">faleconosco@berliozsolutions.com</a></div>
+                    <div class="unit-body"><a href="mailto:faleconosco@berliozsolutions.com" target="_blank"
+                        id="mail">faleconosco@berliozsolutions.com</a></div>
                   </div>
                 </li>
               </ul>
@@ -85,6 +87,17 @@
                     href="https://www.instagram.com/berliozsolutions" target="_blank"></a></li>
                 <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-facebook"
                     href="https://facebook.com/berliozsolutions" target="_blank"></a></li>
+                <div class="select-menu">
+                  <div class="select">
+                    <span id="selectLanguage">Selecionar Linguagem</span>
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                  <div class="options-list">
+                    <div class="option" id="optionEn" data-lang="en">Inglês</div>
+                    <div class="option" id="optionEs" data-lang="es">Espanhol</div>
+                    <div class="option" id="optionPt" data-lang="pt">Português</div>
+                  </div>
+                </div>
               </ul>
 
             </div>
@@ -104,11 +117,11 @@
               <div class="rd-navbar-main-element">
                 <div class="rd-navbar-nav-wrap">
                   <ul class="rd-navbar-nav">
-                    <li class="rd-nav-item active"><a class="rd-nav-link" href="inicio">Início</a>
+                    <li class="rd-nav-item active"><a class="rd-nav-link" id="homeLink" href="inicio">Início</a>
                     </li>
-                    <li class="rd-nav-item "><a class="rd-nav-link" href="sobre">Sobre</a>
+                    <li class="rd-nav-item "><a class="rd-nav-link" id="aboutLink" href="sobre">Sobre</a>
                     </li>
-                    <li class="rd-nav-item "><a class="rd-nav-link" href="contatos">Contato</a>
+                    <li class="rd-nav-item "><a class="rd-nav-link" id="contactLink" href="contatos">Contato</a>
                     </li>
                   </ul>
                 </div>
@@ -119,88 +132,8 @@
       </div>
     </header>
 
-    <style>
-      .select-menu {
-        width: 200px;
-        cursor: pointer;
-        position: relative;
-        z-index: 1000;
-      }
 
-      .select {
-        font-size: 14px;
-        background-color: #404044;
-        padding: 20px 10px 20px 10px;
-        height: 20px;
-        color: #fff;
-        font-weight: 500;
-        border-radius: 6px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
 
-      .options-list {
-        position: absolute;
-        width: 100%;
-        background-color: #f9f9f9;
-        border-radius: 6px;
-        margin-top: 14px;
-        padding: 0 20px;
-        max-height: 180px;
-        overflow-y: auto;
-        transition: .4s linear .2s;
-        height: 0;
-      }
-
-      .option {
-        padding: 8px 0;
-        font-size: 14px;
-        transition: .3s ease-in-out;
-      }
-
-      .option:hover,
-      .option.selected {
-        color: #505cfd ;
-      }
-
-      .options-list::-webkit-scrollbar {
-        width: 4px;
-        background-color: #eee;
-      }
-
-      .options-list::-webkit-scrollbar-thumb {
-        background-color: #505cfd ;
-      }
-
-      .options-list.active {
-        height: max-content;
-      }
-    </style>
-
-    <script>
-   
-      const select = document.querySelector(".select");
-      const options_list = document.querySelector(".options-list");
-      const options = document.querySelectorAll(".option");
-
-      //show & hide options list
-      select.addEventListener("click", () => {
-        options_list.classList.toggle("active");
-        select.querySelector(".fa-angle-down").classList.toggle("fa-angle-up");
-      });
-
-      //select option
-      options.forEach((option) => {
-        option.addEventListener("click", () => {
-          options.forEach((option) => { option.classList.remove('selected') });
-          select.querySelector("span").innerHTML = option.innerHTML;
-          option.classList.add("selected");
-          options_list.classList.toggle("active");
-          select.querySelector(".fa-angle-down").classList.toggle("fa-angle-up");
-        });
-      });
-    </script>
     <!--Main section-->
     <section class="section main-section parallax-scene-js"
       style="background:url('images/main-home-banner.webp') no-repeat; background-size:cover;">
@@ -208,11 +141,13 @@
         <div class="row justify-content-center">
           <div class="col-xl-8 col-12">
             <div class="main-decorated-box text-center text-xl-center">
-              <div class="decorated-subtitle text-italic text-white wow slideInLeft">Somos a</div>
+              <div class="decorated-subtitle text-italic text-white wow slideInLeft" id="bannerText0">Somos a</div>
               <h1 class="text-white text-xl-center wow slideInRight" data-wow-delay=".3s">
                 <span class="medium font-weight-bold d-inline-flex offset-right-170 mb-2"
-                  style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);">Inovação que Impulsiona o Seu Negócio</span>
-                <h4 class="text-white mb-5 mt-1">Soluções personalizadas e inovadoras, capacitamos o crescimento e a
+                  style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);" id="bannerText1">Inovação que Impulsiona o Seu
+                  Negócio</span>
+                <h4 class="text-white mb-5 mt-1" id="bannerText2">Soluções personalizadas e inovadoras, capacitamos o
+                  crescimento e a
                   visibilidade
                   da sua marca no online.</h4>
               </h1>
@@ -265,10 +200,11 @@
           </div>
           <div class="col-lg-6 col-12">
             <div class="block-sm offset-top-45">
-              <div class="section-name wow fadeInRight" data-wow-delay=".2s">SOBRE NÓS</div>
-              <h3 class="wow fadeInLeft text-capitalize devider-bottom" data-wow-delay=".3s">O Que Nós<span
-                  class="text-primary"> Fazemos</span></h3>
-              <p class="offset-xl-40 wow fadeInUp" id="mainTxtHome" data-wow-delay=".4s">Na nossa empresa, oferecemos
+              <div class="section-name wow fadeInRight" data-wow-delay=".2s" id="aboutText0">SOBRE NÓS</div>
+              <h3 class="wow fadeInLeft text-capitalize devider-bottom" data-wow-delay=".3s" id="aboutText1">O Que
+                Nós<span class="text-primary"> Fazemos</span></h3>
+              <p class="offset-xl-40 wow fadeInUp" id="mainTxtHome" data-wow-delay=".4s" id="aboutText2">Na nossa
+                empresa, oferecemos
                 soluções digitais
                 personalizadas para atender às necessidades exclusivas do seu negócio. Desde sites e aplicativos
                 profissionais que
@@ -276,49 +212,26 @@
                 equipe especializada está aqui para transformar suas ideias em realidade digital.
               </p>
               <p class="default-letter-spacing font-weight-bold text-gray-dark wow fadeInUp" id="secondTxtHome"
-                data-wow-delay=".4s">
+                data-wow-delay=".4s" id="aboutText3">
                 Combinando criatividade, habilidade técnica e conhecimento, entregamos software personalizado que
                 impulsiona o sucesso do seu negócio no mundo digital.</p><a
                 class="button-width-190 button-primary button-circle button-lg button offset-top-30"
-                style="background-color: #3100DB;" href="/sobre">Ler Mais</a>
+                style="background-color: #3100DB;" href="/sobre" id="aboutText4">Ler Mais</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <style>
-      @media (min-width: 1200px) {
-        #mainTxtHome {
-          font-size: 19px;
-        }
-
-        #secondTxtHome {
-          font-size: 16px;
-        }
-      }
-
-      @media (min-width: 768px) and (max-width: 991px) {
-        #first-photo {
-          display: flex;
-          justify-content: center;
-        }
-
-        #div-product {
-          justify-content: flex-start !important;
-        }
-      }
-    </style>
-
     <!--Features-->
     <section class="section custom-section position-relative section-md mb-5" style='height:700px'>
       <div class="container">
         <div class="row">
           <div class="col-xl-7 col-lg-7 col-12">
-            <div class="section-name wow fadeInRight">Nossos Diferenciais</div>
-            <h3 class="text-capitalize devider-left wow fadeInLeft" data-wow-delay=".1s">Por Que Escolher a<span
-                class="text-primary"> Nossa Empresa</span></h3>
-            <p class=" wow fadeInLeft" data-wow-delay=".1s">Com uma equipe dedicada e apaixonada pela criação de
+            <div class="section-name wow fadeInRight" id="differentialsText0">Nossos Diferenciais</div>
+            <h3 class="text-capitalize devider-left wow fadeInLeft" data-wow-delay=".1s" id="differentialsText1">Por Que
+              Escolher a<span class="text-primary" id="differentialsText2"> Nossa Empresa</span></h3>
+            <p class=" wow fadeInLeft" data-wow-delay=".1s" id="differentialsText3">Com uma equipe dedicada e apaixonada pela criação de
               sistemas de software e aplicativos, estamos animados
               para começar nossa jornada ao lado dos nossos clientes. Aqui estão algumas razões pelas quais você deve
               escolher a nossa empresa.
@@ -326,7 +239,7 @@
             <div class="row row-15">
               <div class="col-xl-6 wow fadeInUp" data-wow-delay=".2s">
                 <div class="box-default">
-                  <div class="box-default-title">Inovação que Impulsiona o Seu Negócio</div>
+                  <div class="box-default-title" id="differentialsText4">Inovação que Impulsiona o Seu Negócio</div>
                   <p class="box-default-description">Descubra como nossas soluções inovadoras estão transformando o
                     cenário empresarial.</p>
                   <span class="box-default-icon novi-icon icon-lg mercury-icon-lightbulb-gears"></span>
@@ -334,7 +247,7 @@
               </div>
               <div class="col-xl-6 wow fadeInUp" data-wow-delay=".3s">
                 <div class="box-default">
-                  <div class="box-default-title">Pensamento Estratégico para o Seu Sucesso</div>
+                  <div class="box-default-title" id="differentialsText5">Pensamento Estratégico para o Seu Sucesso</div>
                   <p class="box-default-description">Na Berlioz, não apenas planejamos, criamos estratégias que garantem
                     o crescimento do seu negócio.
                   </p><span class="box-default-icon novi-icon icon-lg mercury-icon-target-2"></span>
@@ -342,25 +255,25 @@
               </div>
               <div class="col-xl-6 wow fadeInUp" data-wow-delay=".4s">
                 <div class="box-default">
-                  <div class="box-default-title">Equipe de Especialistas ao Seu Dispor
+                  <div class="box-default-title" id="differentialsText6">Equipe de Especialistas ao Seu Dispor
                   </div>
-                  <p class="box-default-description">Contamos com uma equipe experiente e apaixonada, pronta para
+                  <p class="box-default-description" id="differentialsText7">Contamos com uma equipe experiente e apaixonada, pronta para
                     superar suas expectativas e impulsionar o seu sucesso.
                   </p><span class="box-default-icon novi-icon icon-lg mercury-icon-user"></span>
                 </div>
               </div>
               <div class="col-xl-6 wow fadeInUp" data-wow-delay=".5s">
                 <div class="box-default">
-                  <div class="box-default-title">Abordagem Criativa para Desafios Reais
+                  <div class="box-default-title" id="differentialsText8">Abordagem Criativa para Desafios Reais
                   </div>
-                  <p class="box-default-description">Cada projeto que abraçamos é uma oportunidade para criar soluções
+                  <p class="box-default-description" id="differentialsText9">Cada projeto que abraçamos é uma oportunidade para criar soluções
                     criativas que vão além das expectativas.
                   </p><span class="box-default-icon novi-icon icon-lg mercury-icon-partners"></span>
                 </div>
               </div>
               <div class="container">
                 <div class="text-center" style="border-radius: 2px !important;"><a href="#"
-                    class="btn btn-primary">Contrate</a></div>
+                    class="btn btn-primary" id="differentialsText10">Contrate</a></div>
               </div>
             </div>
           </div>
@@ -372,19 +285,17 @@
       </div>
     </section>
 
-
-
     <section class="section section-md bg-xs-overlay"
       style="background:url('images/white-image-home.webp')no-repeat;background-size:cover">
       <div class="container">
         <div class="row row-50 justify-content-center" id="div-product">
           <div class="col-12 col-md-10 col-lg-8">
-            <div class="section-name wow fadeInRight text-center" data-wow-delay=".2s">ALGUNS PRODUTOS</div>
-            <h3 class="wow fadeInLeft text-capitalize text-center" data-wow-delay=".3s">Descubra a solução ideal para
+            <div class="section-name wow fadeInRight text-center" data-wow-delay=".2s" id="productsText0">ALGUNS PRODUTOS</div>
+            <h3 class="wow fadeInLeft text-capitalize text-center" data-wow-delay=".3s" id="productsText1">Descubra a solução ideal para
               impulsionar o
-              <span class="text-primary" style="color: #3100DB !important;"> seu negócio</span>
+              <span class="text-primary" style="color: #3100DB !important;" id="productsText2"> seu negócio</span>
             </h3>
-            <p class="text-center wow fadeInLeft" data-wow-delay=".3s">Com nossos serviços especializados em
+            <p class="text-center wow fadeInLeft" data-wow-delay=".3s" id="productsText3">Com nossos serviços especializados em
               desenvolvimento de sites, aplicativos e sistemas,
               oferecemos soluções tecnológicas personalizadas que atendem às necessidades específicas da sua empresa,
               ajudando você a alcançar seus objetivos e se destacar no mercado.</p>
@@ -393,21 +304,21 @@
         <div class="row row-30 justify-content-center flex-nowrap" id="section-ours-diferents">
           <div class="col-xl-4 col-md-6 col-12 wow fadeInDown" data-wow-delay=".1s">
             <div class="pricing-box bg-gray-dark">
-              <div class="pricing-box-tittle">Landing Page</div>
+              <div class="pricing-box-tittle" id="productsText4">Landing Page</div>
               <hr />
-              <p>- Apresentação de Produto <br>
+              <p id="productsText5">- Apresentação de Produto <br>
                 - Divulgação de serviço<br>
                 - Chamada para Ação (CTA) Persuasiva <br>
                 - Otimização para Conversão</p><a class="button button-190 button-circle btn-primary-rounded"
                 href="https://wa.me/5543999702073?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+Landing+Page."
-                target="_blank">SABER MAIS</a>
+                target="_blank" id="productsText6">SABER MAIS</a>
             </div>
           </div>
           <div class="col-xl-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s">
             <div class="pricing-box bg-gray-primary" style="background-color: #3100DB;">
-              <div class="pricing-box-tittle" target="_blank">Site</div>
+              <div class="pricing-box-tittle" target="_blank" id="productsText7">Site</div>
               <hr />
-              <p>
+              <p id="productsText8">
                 - Catálogo de Produtos/Serviços <br>
                 - Apresentação Profissional <br>
                 - História da Empresa<br>
@@ -415,34 +326,34 @@
                 - Blog <br>
               </p><a class="button button-190 button-circle btn-rounded-outline"
                 href="https://wa.me/5543999702073?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+Site."
-                target="_blank">SABER MAIS</a>
+                target="_blank" id="productsText9">SABER MAIS</a>
             </div>
           </div>
           <div class="col-xl-4 col-md-6 col-12 wow fadeInDown" data-wow-delay=".3s">
             <div class="pricing-box bg-gray-dark">
-              <div class="pricing-box-tittle">Sistema para gestão</div>
+              <div class="pricing-box-tittle" id="productsText10">Sistema para gestão</div>
               <hr />
-              <p>- Controle de Estoque <br>
+              <p id="productsText11">- Controle de Estoque <br>
                 - Gestão Financeira <br>
                 - Sistema de Agendamento <br>
                 - Gestão de Fornecedores <br>
                 - Sistema de Pedidos</p><a class="button button-190 button-circle btn-primary-rounded"
                 href="https://wa.me/5543999702073?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+Sistema+para+gest%C3%A3o."
-                target="_blank">SABER
+                target="_blank" id="productsText12">SABER
                 MAIS</a>
             </div>
           </div>
           <div class="col-xl-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".4s">
             <div class="pricing-box bg-gray-primary" style="background-color: #3100DB;">
-              <div class="pricing-box-tittle">Aplicativos</div>
+              <div class="pricing-box-tittle" id="productsText13">Aplicativos</div>
               <hr />
-              <p>- Compras <br>
+              <p id="productsText14">- Compras <br>
                 - Notícias <br>
                 - Serviços<br>
                 - Reservas<br>
                 - Fitness</p><a class="button button-190 button-circle btn-rounded-outline"
                 href="https://wa.me/5543999702073?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+Aplicativo."
-                target="_blank">SABER
+                target="_blank" id="productsText15">SABER
                 MAIS</a>
             </div>
           </div>
@@ -458,11 +369,6 @@
       }
     </style>
 
-
-
-
-
-
     <!--Footer-->
     <!-- /////////////////// FOOTER /////////////////// -->
     <footer class="section footer-classic section-sm">
@@ -471,34 +377,34 @@
           <div class="col-lg-3 wow">
             <!--Brand--><a class="brand" href="inicio"><img class="brand-logo-light" src="images/logo-berlioz.webp"
                 alt="logo-berlioz" width="100" height="17" /></a>
-            <p class="footer-classic-description offset-top-0 offset-right-25">Berlioz Solutions - Inovação em sites,
+            <p class="footer-classic-description offset-top-0 offset-right-25" id="footerText0">Berlioz Solutions - Inovação em sites,
               Aplicativos e Sistemas Personalizados. Utilizamos inovações e experiência para impulsionar o seu sucesso
               e da sua empresa.</p>
           </div>
           <div class="col-lg-2 col-sm-4 wow" data-wow-delay=".3s">
-            <P class="footer-classic-title">Acesso Rápido</P>
+            <P class="footer-classic-title" id="footerText1">Acesso Rápido</P>
             <ul class="footer-classic-nav-list">
-              <li><a href="inicio">Início</a></li>
-              <li><a href="sobre">Sobre</a></li>
-              <li><a href="contatos">Contato</a></li>
+              <li><a href="inicio" id="footerText2">Início</a></li>
+              <li><a href="sobre" id="footerText3">Sobre</a></li>
+              <li><a href="contatos" id="footerText4">Contato</a></li>
             </ul>
           </div>
           <div class="col-lg-3 col-sm-8 wow">
-            <P class="footer-classic-title">Informações de contato</P>
-            <div class="d-block offset-top-0"><span class="mr-2">Londrina - PR</span><span
-                class="d-lg-block">Brasil</span></div><a class="d-inline-block accent-link" href="mailto:faleconosco@berliozsolutions.com
+            <P class="footer-classic-title" id="footerText5">Informações de contato</P>
+            <div class="d-block offset-top-0"><span class="mr-2" id="footerText6">Londrina - PR</span><span
+                class="d-lg-block" id="footerText7">Brasil</span></div><a class="d-inline-block accent-link" href="mailto:faleconosco@berliozsolutions.com
                 ">
               faleconosco@berliozsolutions.com
-            </a><a class="d-inline-block" href="https://wa.me/5543999702073" target="_blank">+55 (43) 99970-2073</a>
+            </a><a class="d-inline-block" href="https://wa.me/5543999702073" target="_blank" id="footerText8">+55 (43) 99970-2073</a>
             <ul>
-              <li>Seg-Sab:<span class="d-inline-block offset-left-10 text-white">9:00 - 18:00</span></li>
+              <li>Seg-Sab:<span class="d-inline-block offset-left-10 text-white" id="footerText9">9:00 - 18:00</span></li>
             </ul>
           </div>
         </div>
       </div>
       <div class="container wow" data-wow-delay=".4s">
         <div class="footer-classic-aside">
-          <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. Todos Direitos Reservados.
+          <p class="rights" id="footerText10"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. Todos Direitos Reservados.
           </p>
           <ul class="social-links">
             <li><a class="fa fa-linkedin" href="https://www.linkedin.com/company/berlioz-solutions" target="_blank"></a>

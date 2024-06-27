@@ -747,26 +747,26 @@
 		// });
 
 		//Mensagem email enviado sem confirmar ajax
-	
+
 		$(document).ready(function () {
 			var $form = $('.rd-mailform'),
 				$output = $('#' + $form.attr('data-form-output'));
-		
+
 			$form.on('submit', function (e) {
 				e.preventDefault();
-		
+
 				var formData = $form.serialize();
-		
+
 				// Exibe a mensagem de sucesso imediatamente após o envio do formulário
 				$output.removeClass("active error success");
 				$output.html('<p><span class="icon text-middle mdi mdi-check icon-xxs"></span><span>Email enviado!</span></p>');
 				$output.addClass("active success");
-		
+
 				// Remove a mensagem de sucesso após 5 segundos
 				setTimeout(function () {
 					$output.removeClass("active success").empty();
 				}, 5000); // 5000 milissegundos = 5 segundos
-		
+
 				$.ajax({
 					method: "POST",
 					url: $form.attr('action'),
@@ -785,9 +785,9 @@
 					}
 				});
 			});
-		}); 
+		});
 
-		
+
 		// Custom Toggles
 		if (plugins.customToggle.length) {
 			for (var i = 0; i < plugins.customToggle.length; i++) {
@@ -870,3 +870,105 @@
 		}
 	});
 }());
+
+//SELECT LANGUAGE
+const select = document.querySelector(".select");
+const options_list = document.querySelector(".options-list");
+const options = document.querySelectorAll(".option");
+
+//show & hide options list
+select.addEventListener("click", () => {
+	options_list.classList.toggle("active");
+	select.querySelector(".fa-angle-down").classList.toggle("fa-angle-up");
+});
+
+//select option
+options.forEach((option) => {
+	option.addEventListener("click", () => {
+		options.forEach((option) => { option.classList.remove('selected') });
+		select.querySelector("span").innerHTML = option.innerHTML;
+		option.classList.add("selected");
+		options_list.classList.toggle("active");
+		select.querySelector(".fa-angle-down").classList.toggle("fa-angle-up");
+	});
+});
+
+
+
+
+
+function setLanguage(lang) {
+	if (lang === 'en') {
+		document.getElementById('titlePage').innerText = 'Berlioz Solutions - Website, Systems, and Apps Development';
+		document.getElementById('numberPhone').innerText = '(43) 99970-2073';
+		document.getElementById('mail').innerText = 'faleconosco@berliozsolutions.com';
+		document.getElementById('selectLanguage').innerText = 'Select Language';
+		document.getElementById('optionEn').innerText = 'English';
+		document.getElementById('optionEs').innerText = 'Spanish';
+		document.getElementById('optionPt').innerText = 'Portuguese';
+		document.getElementById('bannerText0').innerText = 'We Are';
+		document.getElementById('bannerText1').innerText = 'Innovation That Drives Your Business';
+		document.getElementById('bannerText2').innerText = 'Customized and innovative solutions, we empower your brand\'s growth and visibility online.';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+		document.getElementById('bannerText0').innerText = '';
+
+
+
+
+	} else if (lang === 'es') {
+		document.getElementById('bannerText0').innerText = 'Somos la';
+		document.getElementById('bannerText1').innerText = 'Innovación que Impulsa su Negocio';
+		document.getElementById('bannerText2').innerText = 'Soluciones personalizadas e innovadoras, potenciamos el crecimiento y la visibilidad de su marca en línea.';
+	} else {
+		document.getElementById('bannerText0').innerText = 'Somos a';
+		document.getElementById('bannerText1').innerText = 'Inovação que Impulsiona o Seu Negócio';
+		document.getElementById('bannerText2').innerText = 'Soluções personalizadas e inovadoras, capacitamos o crescimento e a visibilidade da sua marca no online.';
+	}
+}
+
+
+
+$(document).ready(function () {
+	$.get('https://ipinfo.io', function (response) {
+		let country = response.country;
+		let lang = 'pt'; 
+
+		if (country === 'US' || country === 'GB' || country === 'CA' || country === 'AU') {
+			lang = 'en'; 
+		} else if (country === 'ES' || country === 'MX' || country === 'AR' || country === 'CO') {
+			lang = 'es'; 
+		}
+
+		if (country !== 'BR' && lang === 'pt') {
+			lang = 'en';
+		}
+
+		setLanguage(lang); // chamar função para configurar o idioma na página
+	}, 'jsonp');
+
+	$('.option').on('click', function () {
+		let lang = $(this).data('lang');
+		setLanguage(lang); // chamar função para configurar o idioma na página
+	});
+})
