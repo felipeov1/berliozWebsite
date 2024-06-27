@@ -4472,7 +4472,7 @@ textarea.form-input {
 }
 
 html.boxed body {
-	background: #edeff4 url(../images/bg-pattern-boxed.png) repeat fixed;
+	background: #edeff4 url(../images/bg-pattern-boxed.webp) repeat fixed;
 }
 
 @media (min-width: 1630px) {
