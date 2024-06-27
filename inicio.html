@@ -11,15 +11,14 @@
 
   <meta name="theme-color" content="#404044">
 
-  <link rel="icon" href="favicon.ico" type="image/jpg">
-  
+  <link rel="icon" href="images/favicon.ico" type="image/jpg">
   <link rel="stylesheet" type="text/css"
     href="//fonts.googleapis.com/css?family=Montserrat:300,400,700%7CPoppins:300,400,500,700,900">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/custom.css">
   <style>
     .ie-panel {
       display: none;
@@ -67,20 +66,39 @@
                 <li>
                   <div class="unit unit-spacing-xs align-items-center">
                     <div class="unit-left"><span class="icon text-middle fa-phone"></span></div>
-                    <div class="unit-body"><a  href="https://wa.me/5543999702073" target="_blank">+55 (43) 99970-2073</a></div>
+                    <div class="unit-body"><a href="https://wa.me/5543999702073" target="_blank">+55 (43) 99970-2073</a>
+                    </div>
                   </div>
                 </li>
                 <li>
                   <div class="unit unit-spacing-xs align-items-center">
                     <div class="unit-left"><span class="icon text-middle fa-envelope"></span></div>
-                    <div class="unit-body"><a href="mailto:faleconosco@berliozsolutions.com" target="_blank">faleconosco@berliozsolutions.com</a></div>
+                    <div class="unit-body"><a href="mailto:faleconosco@berliozsolutions.com"
+                        target="_blank">faleconosco@berliozsolutions.com</a></div>
                   </div>
                 </li>
               </ul>
               <ul class="social-links">
-             <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-linkedin" href="https://www.linkedin.com/company/berlioz-solutions"  target="_blank"></a></li>                <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-instagram" href="https://www.instagram.com/berliozsolutions" target="_blank"></a></li>
-                <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-facebook" href="https://facebook.com/berliozsolutions" target="_blank"></a></li>
+                <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-linkedin"
+                    href="https://www.linkedin.com/company/berlioz-solutions" target="_blank"></a></li>
+                <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-instagram"
+                    href="https://www.instagram.com/berliozsolutions" target="_blank"></a></li>
+                <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-facebook"
+                    href="https://facebook.com/berliozsolutions" target="_blank"></a></li>
+
+                <div class="select-menu">
+                  <div class="select">
+                    <span>Selecionar Linguagem</span>
+                    <i class="fas fa-angle-down"></i>
+                  </div>
+                  <div class="options-list">
+                    <div class="option">Inglês</div>
+                    <div class="option">Espanhol</div>
+                    <div class="option">Português</div>
+                  </div>
+                </div>
               </ul>
+
             </div>
           </div>
           <div class="rd-navbar-main-outer">
@@ -91,9 +109,8 @@
                 <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                 <!--RD Navbar Brand-->
                 <div class="rd-navbar-brand">
-                  <!--Brand--><a class="brand" href="inicio"><img class="brand-logo-dark"
-                      src="images/logo-berlioz.png" alt="" width="100" height="17" /><img
-                      class="brand-logo-light" /></a>
+                  <!--Brand--><a class="brand" href="inicio"><img class="brand-logo-dark" src="images/logo-berlioz.png"
+                      alt="" width="100" height="17" /><img class="brand-logo-light" /></a>
                 </div>
               </div>
               <div class="rd-navbar-main-element">
@@ -105,7 +122,6 @@
                     </li>
                     <li class="rd-nav-item "><a class="rd-nav-link" href="contatos">Contato</a>
                     </li>
-                    </li>
                   </ul>
                 </div>
               </div>
@@ -115,7 +131,88 @@
       </div>
     </header>
 
+    <style>
+      .select-menu {
+        width: 200px;
+        cursor: pointer;
+        position: relative;
+        z-index: 1000;
+      }
 
+      .select {
+        font-size: 14px;
+        background-color: #404044;
+        padding: 20px 10px 20px 10px;
+        height: 20px;
+        color: #fff;
+        font-weight: 500;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .options-list {
+        position: absolute;
+        width: 100%;
+        background-color: #f9f9f9;
+        border-radius: 6px;
+        margin-top: 14px;
+        padding: 0 20px;
+        max-height: 180px;
+        overflow-y: auto;
+        transition: .4s linear .2s;
+        height: 0;
+      }
+
+      .option {
+        padding: 8px 0;
+        font-size: 14px;
+        transition: .3s ease-in-out;
+      }
+
+      .option:hover,
+      .option.selected {
+        color: #505cfd ;
+      }
+
+      .options-list::-webkit-scrollbar {
+        width: 4px;
+        background-color: #eee;
+      }
+
+      .options-list::-webkit-scrollbar-thumb {
+        background-color: #505cfd ;
+      }
+
+      .options-list.active {
+        height: max-content;
+      }
+    </style>
+
+    <script>
+   
+      const select = document.querySelector(".select");
+      const options_list = document.querySelector(".options-list");
+      const options = document.querySelectorAll(".option");
+
+      //show & hide options list
+      select.addEventListener("click", () => {
+        options_list.classList.toggle("active");
+        select.querySelector(".fa-angle-down").classList.toggle("fa-angle-up");
+      });
+
+      //select option
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          options.forEach((option) => { option.classList.remove('selected') });
+          select.querySelector("span").innerHTML = option.innerHTML;
+          option.classList.add("selected");
+          options_list.classList.toggle("active");
+          select.querySelector(".fa-angle-down").classList.toggle("fa-angle-up");
+        });
+      });
+    </script>
     <!--Main section-->
     <section class="section main-section parallax-scene-js"
       style="background:url('images/main-home-banner.png') no-repeat; background-size:cover;">
@@ -233,7 +330,8 @@
             <div class="section-name wow fadeInRight">Nossos Diferenciais</div>
             <h3 class="text-capitalize devider-left wow fadeInLeft" data-wow-delay=".1s">Por Que Escolher a<span
                 class="text-primary"> Nossa Empresa</span></h3>
-            <p class=" wow fadeInLeft" data-wow-delay=".1s">Com uma equipe dedicada e apaixonada pela criação de sistemas de software e aplicativos, estamos animados
+            <p class=" wow fadeInLeft" data-wow-delay=".1s">Com uma equipe dedicada e apaixonada pela criação de
+              sistemas de software e aplicativos, estamos animados
               para começar nossa jornada ao lado dos nossos clientes. Aqui estão algumas razões pelas quais você deve
               escolher a nossa empresa.
             </p>
@@ -298,7 +396,8 @@
               impulsionar o
               <span class="text-primary" style="color: #3100DB !important;"> seu negócio</span>
             </h3>
-            <p class="text-center wow fadeInLeft" data-wow-delay=".3s">Com nossos serviços especializados em desenvolvimento de sites, aplicativos e sistemas,
+            <p class="text-center wow fadeInLeft" data-wow-delay=".3s">Com nossos serviços especializados em
+              desenvolvimento de sites, aplicativos e sistemas,
               oferecemos soluções tecnológicas personalizadas que atendem às necessidades específicas da sua empresa,
               ajudando você a alcançar seus objetivos e se destacar no mercado.</p>
           </div>
@@ -312,7 +411,8 @@
                 - Divulgação de serviço<br>
                 - Chamada para Ação (CTA) Persuasiva <br>
                 - Otimização para Conversão</p><a class="button button-190 button-circle btn-primary-rounded"
-                href="https://wa.me/5543999702073?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+Landing+Page." target="_blank">SABER MAIS</a>
+                href="https://wa.me/5543999702073?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+Landing+Page."
+                target="_blank">SABER MAIS</a>
             </div>
           </div>
           <div class="col-xl-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s">
@@ -325,7 +425,9 @@
                 - História da Empresa<br>
                 - Formulário de Contato <br>
                 - Blog <br>
-              </p><a class="button button-190 button-circle btn-rounded-outline" href="https://wa.me/5543999702073?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+Site." target="_blank">SABER MAIS</a>
+              </p><a class="button button-190 button-circle btn-rounded-outline"
+                href="https://wa.me/5543999702073?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+Site."
+                target="_blank">SABER MAIS</a>
             </div>
           </div>
           <div class="col-xl-4 col-md-6 col-12 wow fadeInDown" data-wow-delay=".3s">
@@ -336,7 +438,9 @@
                 - Gestão Financeira <br>
                 - Sistema de Agendamento <br>
                 - Gestão de Fornecedores <br>
-                - Sistema de Pedidos</p><a class="button button-190 button-circle btn-primary-rounded" href="https://wa.me/5543999702073?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+Sistema+para+gest%C3%A3o." target="_blank">SABER
+                - Sistema de Pedidos</p><a class="button button-190 button-circle btn-primary-rounded"
+                href="https://wa.me/5543999702073?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+Sistema+para+gest%C3%A3o."
+                target="_blank">SABER
                 MAIS</a>
             </div>
           </div>
@@ -348,7 +452,9 @@
                 - Notícias <br>
                 - Serviços<br>
                 - Reservas<br>
-                - Fitness</p><a class="button button-190 button-circle btn-rounded-outline" href="https://wa.me/5543999702073?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+Aplicativo." target="_blank">SABER
+                - Fitness</p><a class="button button-190 button-circle btn-rounded-outline"
+                href="https://wa.me/5543999702073?text=Ol%C3%A1%21+Gostaria+de+mais+informa%C3%A7%C3%B5es+sobre+Aplicativo."
+                target="_blank">SABER
                 MAIS</a>
             </div>
           </div>
@@ -407,8 +513,9 @@
           <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. Todos Direitos Reservados.
           </p>
           <ul class="social-links">
-            <li><a class="fa fa-linkedin" href="https://www.linkedin.com/company/berlioz-solutions"  target="_blank"></a></li>
-            <li><a class="fa fa-facebook"  href="https://facebook.com/berliozsolutions" target="_blank"></a></li>
+            <li><a class="fa fa-linkedin" href="https://www.linkedin.com/company/berlioz-solutions" target="_blank"></a>
+            </li>
+            <li><a class="fa fa-facebook" href="https://facebook.com/berliozsolutions" target="_blank"></a></li>
             <li><a class="fa fa-instagram" href="https://www.instagram.com/berliozsolutions" target="_blank"></a></li>
           </ul>
         </div>

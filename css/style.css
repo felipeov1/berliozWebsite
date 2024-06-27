@@ -1372,6 +1372,7 @@ p+.list-marked {
 .social-links {
 	display: flex;
 	margin-left: -25px;
+	align-items: center
 }
 
 .social-links>* {
