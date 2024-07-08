@@ -26,7 +26,7 @@
 			copyrightYear: $('.copyright-year'),
 			owl: $('.owl-carousel'),
 			progressLinear: $('.progress-linear'),
-			preloader: $('.preloader'),
+			// preloader: $('.preloader'),
 			rdNavbar: $('.rd-navbar'),
 			rdMailForm: $('.rd-mailform'),
 			rdInputLabel: $('.form-label'),
@@ -70,11 +70,12 @@
 	// Initialize scripts that require a loaded page
 	$window.on('load', function () {
 		// Page loader & Page transition
-		if (plugins.preloader.length && !isNoviBuilder) {
+		// plugins.preloader.length &&
+		if (!isNoviBuilder) {
 			pageTransition({
 				target: document.querySelector('.page'),
 				delay: 0,
-				duration: 500,
+				duration: 0,
 				classIn: 'fadeIn',
 				classOut: 'fadeOut',
 				classActive: 'animated',
@@ -83,11 +84,11 @@
 				},
 				onTransitionStart: function (options) {
 					setTimeout(function () {
-						plugins.preloader.removeClass('loaded');
+						// plugins.preloader.removeClass('loaded');
 					}, options.duration * .75);
 				},
 				onReady: function () {
-					plugins.preloader.addClass('loaded');
+					// plugins.preloader.addClass('loaded');
 					windowReady = true;
 				}
 			});

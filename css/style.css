@@ -5903,7 +5903,7 @@ html:not(.lt-ie10) .not-animated {
 *
 * Preloader
 */
-.preloader {
+/* .preloader {
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -5954,7 +5954,7 @@ html:not(.lt-ie10) .not-animated {
 		transform: rotate(360deg);
 	}
 }
-
+ */
 
 
 /*
